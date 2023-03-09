@@ -1,6 +1,27 @@
-# Task Manager - API Docs
+# Task Manager API Documentation
 
-### https://taskmanager-9vb8.onrender.com/api/v1/docs
+Welcome to the Task Manager API Documentation! This API is designed to provide a simple and intuitive interface for managing tasks. You can access the API Docs and test all endpoints at https://taskmanager-9vb8.onrender.com/api/v1/docs.
+
+## Getting Started
+
+To use the Task Manager API Dos, follow these steps:
+
+1. Create a user account by sending a POST request with a username and password in the request body.
+2. Sign in to your account by sending a POST request with your username and password in the request body. The response will include an authorization token.
+3. To authorize requests to the task endpoints, click on the "Authorize" button in the API Docs and paste in the authorization token.
+4. You are now authorized to test the task endpoints!
+
+## Using the API
+
+Once authorized, you can create, read, update, and delete tasks using the available endpoints. The API supports the following operations:
+
+- GET - Get all tasks
+- GET - Get a specific task by ID
+- POST - Create a new task
+- PUT - Update an existing task by ID
+- DELETE - Delete a task by ID
+
+Thank you for using my Task Manager API. If you have any questions or encounter any issues, please don't hesitate to contact me.
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
