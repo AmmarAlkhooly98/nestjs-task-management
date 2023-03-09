@@ -17,13 +17,7 @@ import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/auth.entity';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiQuery,
-  ApiSecurity,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { TaskStatus } from './task-status.enum';
 
 @ApiBearerAuth()
