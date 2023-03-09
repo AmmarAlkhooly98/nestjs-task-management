@@ -13,7 +13,7 @@ export class GetTasksFilterDto {
   @IsNotEmpty()
   @ApiProperty({
     required: false,
-    description: 'Search through all your title and description',
+    description: 'Filter tasks by searching through titles and descriptions.',
   })
   search?: string;
 }
