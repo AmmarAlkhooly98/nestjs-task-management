@@ -11,6 +11,9 @@ export class GetTasksFilterDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ required: false })
+  @ApiProperty({
+    required: false,
+    description: 'Search through all your title and description',
+  })
   search?: string;
 }

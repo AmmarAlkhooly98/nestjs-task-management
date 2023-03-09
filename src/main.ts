@@ -15,6 +15,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
 
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Task Management API docs')
     .setDescription('API for task management applications')
     .setVersion('1.0')

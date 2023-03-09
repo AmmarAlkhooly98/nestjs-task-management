@@ -17,8 +17,16 @@ import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/auth.entity';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiQuery,
+  ApiSecurity,
+  ApiTags,
+} from '@nestjs/swagger';
+import { TaskStatus } from './task-status.enum';
 
+@ApiBearerAuth()
 @Controller('tasks')
 @UseGuards(AuthGuard())
 @ApiTags('Tasks')
@@ -26,6 +34,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
+  @ApiQuery({ name: 'status', enum: TaskStatus, required: false })
   getTasks(
     @Query() getTasksFilterDto: GetTasksFilterDto,
     @GetUser() user: User,
@@ -55,6 +64,7 @@ export class TasksController {
   }
 
   @Patch('/:id/status')
+  @ApiBody({ type: UpdateTaskStatusDto })
   updateStatus(
     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
     @Param('id') taskId: string,
