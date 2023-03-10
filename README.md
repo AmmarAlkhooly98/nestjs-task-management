@@ -18,7 +18,7 @@ Once authorized, you can create, read, update, and delete tasks using the availa
 - GET - Get all tasks
 - GET - Get a specific task by ID
 - POST - Create a new task
-- PUT - Update an existing task by ID
+- PATCH - Update an existing task status by ID
 - DELETE - Delete a task by ID
 
 Thank you for using my Task Manager API. If you have any questions or encounter any issues, please don't hesitate to contact me.
