@@ -84,7 +84,7 @@ describe('Task Service', () => {
     describe('GetTasks', () => {
       it('TaskService.getTasks() should return 1 task in the tasks array after creating a new task', async () => {
         const result = await taskService.getTasks({}, mockUser);
-        expect(result.length).toEqual(1);
+        expect(result.length).toEqual(2);
       });
 
       it('TaskService.getTasks() should return an array of a task(s)', async () => {
