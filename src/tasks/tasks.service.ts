@@ -96,11 +96,15 @@ export class TasksService {
     try {
       const deleted = await this.taskRepository.delete({ id, user });
       if (!deleted.affected) {
-        throw new NotFoundException(`Task with id: "${id}" not found`);
+        throw new NotFoundException();
       }
       return 'Task deleted';
     } catch (e) {
-      console.error(e);
+      if (e.code === '22P02') {
+        throw new InternalServerErrorException('Invalid task ID');
+      } else if (e.status === 404) {
+        throw new NotFoundException(`Task with id: "${id}" not found`);
+      }
       throw new InternalServerErrorException();
     }
   }
