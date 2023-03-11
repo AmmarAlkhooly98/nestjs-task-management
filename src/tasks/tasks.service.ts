@@ -28,7 +28,6 @@ export class TasksService {
       await this.taskRepository.save(task);
       return task;
     } catch (e) {
-      console.error(e);
       throw new InternalServerErrorException();
     }
   }
@@ -55,7 +54,6 @@ export class TasksService {
       const tasks = query.getMany();
       return tasks;
     } catch (e) {
-      console.error(e);
       throw new InternalServerErrorException();
     }
   }
@@ -64,14 +62,16 @@ export class TasksService {
     try {
       const task = await this.taskRepository.findOne({ where: { id, user } });
       if (!task) {
-        throw new NotFoundException(`Task with id: "${id}" not found`);
+        throw new NotFoundException();
       }
       return task;
     } catch (e) {
-      console.error(e);
       if (e.code === '22P02') {
-        throw new InternalServerErrorException('Invalid task ID');
+        throw new NotFoundException('Invalid task ID');
+      } else if (e.status === 404) {
+        throw new NotFoundException(`Task with id: "${id}" not found`);
       }
+      throw new InternalServerErrorException();
     }
   }
 
@@ -87,7 +87,6 @@ export class TasksService {
       await this.taskRepository.save(task);
       return task;
     } catch (e) {
-      console.error(e);
       throw new InternalServerErrorException();
     }
   }
@@ -101,7 +100,7 @@ export class TasksService {
       return 'Task deleted';
     } catch (e) {
       if (e.code === '22P02') {
-        throw new InternalServerErrorException('Invalid task ID');
+        throw new NotFoundException('Invalid task ID');
       } else if (e.status === 404) {
         throw new NotFoundException(`Task with id: "${id}" not found`);
       }
