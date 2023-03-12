@@ -17,9 +17,9 @@ export class AuthCredentialsDto {
 
   @IsString()
   @IsNotEmpty()
-  @MaxLength(200)
   @MinLength(5)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+  @MaxLength(20)
+  @Matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d|.*[^\da-zA-Z]).{5,20}$/, {
     message:
       'Please enter a password that contains at least one uppercase and lowercase letter, one number or special character.',
   })
